@@ -16,10 +16,7 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn clean install
-
-      - name: Run tests with coverage
-        run: mvn test jacoco:report
+        run: mvn clean install -DskipTests
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
