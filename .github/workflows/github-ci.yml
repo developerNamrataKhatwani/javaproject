@@ -15,6 +15,11 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java
+
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
