@@ -1,9 +1,9 @@
 package com.practice.javaproject.Service;
 
+import com.practice.javaproject.Exceptions.EmployeeNotFoundException;
 import com.practice.javaproject.Repository.EmployeeRepository;
 import com.practice.javaproject.model.Employee;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class EmployeeService {
     public Employee getEmployeeById(UUID ID) {
         // Logic to get employee by ID
         // Assuming token is the employee ID for this example
-        return employeeRepository.findById(ID).orElse(null);
+        return employeeRepository.findById(ID).orElseThrow(() -> new EmployeeNotFoundException("Employee ID " +ID +" not found"));
     }
 
     public List<Employee> findAllEmployees() {
